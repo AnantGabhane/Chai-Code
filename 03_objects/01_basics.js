@@ -6,7 +6,11 @@
 
 // singleton is a unique instance of it;s type 
 
+<<<<<<< HEAD
 // defining a object - it;s basically a key value pair
+=======
+// defining a singleton object - it;s basically a key value pair
+>>>>>>> b9651d5 (objects basics)
 const mySym = Symbol("key1")
 
 const jsuser = {
