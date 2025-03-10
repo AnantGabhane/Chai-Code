@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+
+<body>
+
+    <h2>Amazing images</h2>
+    <div>
+        <ul style="background-color: #414141; color: aliceblue;" id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    // this is not a physiable approach  instead of this we need to use eventlistener which provides you ability of propogation 
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert('You clicked on the owl!');
+    // }
+
+    // attachEventListener('click', function () {});
+    // jQuery - on 
+
+    // we get event object with this addEventListener which contains properties like where click, which browser, at what time was clicked
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, ScreenX, ScreenY
+    // altKey, shiftKey, ctrlKey, keycode, 
+
+    // Event propogation has 2 contexts -- false for event bubbling and true for event capturing
+
+    // this is how bubling works first i'll print own message and then images message event capturing happens from bottom to top for false
+
+    // for true values it'll show images message first and then owl messsage 
+
+    // depends on the usecase 
+
+    /*
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("cliccked inside the ul");
+
+    }, false);
+
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("owl cliccked inside the ul");
+        e.stopPropagation(); // stop propagation /bubbling of click event 
+    }, false);
+
+    document.getElementsById('google').addEventListener('click', function (e) {
+        e.preventDefault(); // prevent
+        e.stopPropagation();
+        console.log("Google cliccked inside the ul");
+    }, false); 
+
+    */
+
+    document.querySelector("#images").addEventListener("click", function (e) {
+        console.log(e.target.parentNode);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+
+            let removeIt = e.target.parentNode
+            // removeIt.remove();
+            removeIt.parentNode.removeChild(removeIt);
+        }
+    }, false);
+</script>
+
+</html>
