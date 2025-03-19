@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <button>Button clicked</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = "react"
+            this.server = "http://localhost:3000"
+            // requirement - should get ref of button and when clicked show message like log 
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this)) //handleClick now has the reference and we sent this also so it now has access to all the variables in current exection context
+                // binding is happening here
+                // with keyword this we provide all the varibles  
+        }
+        handleClick() {
+            console.log("button clicked");
+            console.log(this.library);
+            console.log(this.server);
+
+
+        }
+    }
+    const app = new React()
+</script>
+
+</html>
