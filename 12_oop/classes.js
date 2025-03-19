@@ -33,5 +33,5 @@ User.prototype.changeUsername = function () {
     return `${this.name.toUpperCase()}`
 }
 const tea = new User("tea", "tea@gmail.com", "12334")
-console.log(tea.encryptPassword());;
-console.log(tea.changeUsername());;
+console.log(tea.encryptPassword());; // 12334abc
+console.log(tea.changeUsername());; // TEA
