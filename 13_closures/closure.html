@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="green">Green</button>
+    <button id="orange">Orange</button>
+</body>
+
+<script>
+    // function init() {
+    //     let name = "Mozilla";
+    //     function displayName() {
+
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    // function Outer() {
+    //     let username = "anant"
+    //     function Inner() {
+    //         console.log("TO inner ",username);
+    //     }
+    //     Inner();
+    // }
+    // Outer();
+    // console.log("TO OUTER", username);
+    // variable defined inside of function is not accessible outside of function -> throws | Uncaught ReferenceError: username is not defined
+
+
+    // function makeFunc() {
+    //     const name = "Mozilla";
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     return displayName;
+    // }
+
+    // const myFunc = makeFunc();
+    // myFunc(); // Mozilla
+
+    // with function all the lexical scope will be sent to function and memory is shared and not just executional context
+
+
+    // due to lexical scoping - inner function has access to out
+
+    // closer comes in - memory's reference  role comes in
+    // JS has 2 jobs to do store in memory and execute on a single thread
+
+
+    // lexiacal scoping - inner function and outer function works
+    // closure - function with all of it's lexical scope is returned 
+</script>
+
+<script>
+    document.getElementById('green').addEventListener('click', function () {
+        document.body.style.backgroundColor = 'green';
+    })
+    document.getElementById('orange').addEventListener('click', function () {
+        document.body.style.backgroundColor = 'orange';
+    })
+
+    function clickHandler(color) {
+        // document.body.style.backgroundColor = `${color}`;
+        return function () {
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+    document.getElementById('orange').onclick = clickHandler("orange")
+</script>
+
+</html>
